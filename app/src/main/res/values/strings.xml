@@ -9,8 +9,4 @@
     <string name="gridButtonTwo">Two</string>
     <string name="gridButtonThree">Three</string>
     <string name="gridButtonFour">Four</string>
-    <string name="zombie_app">Zombie Movies App</string>
-    <string name="zombie_movies">Zombie Movies</string>
-    <string name="zombie_movie_list">Zombie Movie List</string>
-    <string name="zombie_movie_details">Zombie Movie Details</string>
 </resources>

@@ -76,7 +76,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="57dp"
-        android:onClick="onClickButton1"
         android:text="@string/gridButtonOne"
         android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/button3"

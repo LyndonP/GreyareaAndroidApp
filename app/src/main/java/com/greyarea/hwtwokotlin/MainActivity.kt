@@ -29,6 +29,11 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+//    fun onClickButton1(view: View) {
+//        val intent = Intent(this, ZombieListActivity::class.java)
+//        startActivity(intent)
+//    }
+
     fun toastMsg(msg: String) {
         val toast = Toast.makeText(this, msg, Toast.LENGTH_SHORT)
         toast.show()
