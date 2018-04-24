@@ -52,6 +52,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         // sets image name for each part
         holder.title.setText(movie_url.get(position));
+        //holder.year.setText(String.valueOf(movie_year));
+
 
         // makes sure click is working
         holder.parentLayout.setOnClickListener(new View.OnClickListener(){

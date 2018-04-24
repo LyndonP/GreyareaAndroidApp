@@ -38,7 +38,8 @@ public class MovieDetails extends AppCompatActivity{
         name.setText(imageName);
 
         TextView year = findViewById(R.id.year);
-        year.setText(imageYear);
+        year.setText(String.valueOf(imageYear));
+        //year.setText(imageYear);
 
         TextView director = findViewById(R.id.director);
         director.setText(imageDirector);
