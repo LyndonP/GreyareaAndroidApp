@@ -9,4 +9,7 @@
     <string name="gridButtonTwo">Two</string>
     <string name="gridButtonThree">Three</string>
     <string name="gridButtonFour">Four</string>
+    <string name="movie_title">Title</string>
+    <string name="movie_year">Year</string>
+    <string name="movie_director">Director</string>
 </resources>

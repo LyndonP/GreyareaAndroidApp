@@ -28,7 +28,6 @@
         android:layout_height="28dp"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="33dp"
         android:textColor="#000"
         android:textSize="12sp"
         tools:ignore="InvalidId" />

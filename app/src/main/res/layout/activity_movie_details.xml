@@ -18,14 +18,15 @@
         android:layout_width="match_parent"
         android:layout_weight="3.2"
         android:layout_height="0dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
+            android:text="Title: "
             android:textColor="#1874cd"
-            android:textSize="15sp"
-            android:text="Title:"/>
+            android:textSize="15sp" />
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
@@ -48,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:text="Year:"
+            android:text="@string/movie_year"
             android:textColor="#1874cd"
             android:textSize="15sp" />
 
@@ -74,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:text="Director:"
+            android:text="@string/movie_director"
             android:textColor="#000"
             android:textSize="15sp" />
         <TextView

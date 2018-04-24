@@ -39,7 +39,7 @@ public class ShowMovies extends AppCompatActivity {
 
         movie_img_url.add("http://collider.com/wp-content/uploads/2016/07/dead-snow.jpg");
         movie_titles.add("Dead Snow");
-        movie_year.add("209");
+        movie_year.add("2009");
         movie_director.add("Tommy Wirkola");
         movie_description.add("With so many zombie movies over the years, eventually you’re going to run out of ways to freshen up the sub-genre. Enter Wirkola’s decidedly skewed take on zombies in this horror-comedy with plenty of guts. Sure, zombies are great movie monsters, but if you have Nazi zombies, well you’ve just doubled-down on the level of villainy (and pun-worthiness) in your picture! \nThis splatter-fest puts a Nordic spin on the traditional zombie by adding in elements of the Draugr, an undead creature from Scandinavian folklore that fiercely protects its treasure horde. In the case of Dead Snow, these draugr happen to be former SS soldiers who terrorized a Norwegian town and looted their belongings, only to be done in or chased into the freezing mountains by the villagers themselves. Dead Snow gets originality points for this, for sure. It’s also a very funny, gory, and satisfyingly violent movie with elements of Evil Dead and “teen sex/slasher” flicks scattered throughout. And if you like it, there’s more where that came from in the sequel, Dead Snow: Red vs Dead. – Dave Trumbore");
 
