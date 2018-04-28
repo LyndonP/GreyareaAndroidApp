@@ -54,7 +54,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.title.setText(movie_url.get(position));
         holder.year.setText(String.valueOf(movie_year.get(position)));
 
-
         // makes sure click is working
         holder.parentLayout.setOnClickListener(new View.OnClickListener(){
             @Override

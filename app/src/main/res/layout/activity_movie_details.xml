@@ -7,6 +7,7 @@
     android:weightSum="50"
     tools:context=".MovieDetails">
 
+
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
@@ -14,19 +15,19 @@
         android:layout_weight="20"
         android:scaleType="fitCenter" />
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_weight="3.2"
         android:layout_height="0dp">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:text="Title: "
             android:textColor="#1874cd"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:text="@string/title"/>
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
@@ -35,7 +36,7 @@
             android:layout_marginTop="5dp"
             android:textColor="	#1e90ff"
             android:textSize="15sp"
-            android:text="Title"/>
+            android:text="@string/title_"/>
 
     </RelativeLayout>
 
@@ -49,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:text="@string/movie_year"
+            android:text="@string/year"
             android:textColor="#1874cd"
             android:textSize="15sp" />
 
@@ -59,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="45dp"
             android:layout_marginTop="5dp"
-            android:text="Year"
+            android:text="@string/year_"
             android:textColor="	#1e90ff"
             android:textSize="15sp" />
 
@@ -75,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:text="@string/movie_director"
+            android:text="@string/director"
             android:textColor="#000"
             android:textSize="15sp" />
         <TextView
@@ -84,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="69dp"
             android:layout_marginTop="5dp"
-            android:text="Director"
+            android:text="@string/director_"
             android:textColor="#000"
             android:textSize="15sp" />
     </RelativeLayout>
