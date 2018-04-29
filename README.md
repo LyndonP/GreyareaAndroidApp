@@ -1,4 +1,6 @@
 # GreyareaAndroidApp
 Greyarea AD340 - Spring 2018 App
 
-<a href="https://imgflip.com/gif/29bzld"><img src="https://i.imgflip.com/29bzld.gif" title="made at imgflip.com"/></a>
+
+<a href="https://media.giphy.com/media/2UGbsFp7nkYWUzEBMj/giphy.gif"><img src="https://media.giphy.com/media/2UGbsFp7nkYWUzEBMj/giphy.gif" title=""/></a>
+
