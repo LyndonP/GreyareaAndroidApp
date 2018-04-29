@@ -36,4 +36,11 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">About</string>
+    <string name="hello_blank_fragment2">Movies</string>
+    <string name="About_clicked">About Clicked</string>
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">closed</string>
+
 </resources>

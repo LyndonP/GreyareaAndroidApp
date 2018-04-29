@@ -7,6 +7,11 @@
     android:weightSum="50"
     tools:context=".MovieDetails">
 
+    <include
+        layout="@layout/app_bar_movie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 
     <ImageView
         android:id="@+id/image"
