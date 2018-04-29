@@ -30,16 +30,22 @@
             android:label="Message Sent"/>
         <activity
             android:name=".ShowMovies"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:label="Zombie Movies"
+            />
         <activity
             android:name=".RecyclerAdapter"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            />
         <activity
             android:name=".MovieDetails"
-            android:parentActivityName=".ShowMovies" />
+            android:parentActivityName=".ShowMovies"
+            android:label="Zombie Movies Details"
+            />
         <activity
             android:name=".AboutActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:label="About Greyarea">
 
         </activity>
     </application>
