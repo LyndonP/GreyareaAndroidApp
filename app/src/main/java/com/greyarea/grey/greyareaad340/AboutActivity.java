@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 public class AboutActivity extends AppCompatActivity {
@@ -23,6 +24,11 @@ public class AboutActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
 
+    }
+
+    public void movieButton(View view){
+        Intent intent = new Intent(this, ShowMovies.class);
+        startActivity(intent);
     }
 
 }

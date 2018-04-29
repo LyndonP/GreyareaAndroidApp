@@ -5,7 +5,11 @@
     <string name="app_dev">Lyndon Pereira</string>
     <string name="app_dev_class">AD340 - Spring 2018</string>
     <string name="app_blurb">Fun fact: I am a Systems Administrator for a Biomed company and I recently setup a Flash storage array that is 550TB.</string>
-    <string name="app_about_blurb">My first Android App for the AD340 Class.</string>
+    <string name="app_about_blurb">This app currently consists of activities that include sending text to another activity,
+                                    Zombie movies displayed in a Recycler View and a Navigation drawer.</string>
+    <string name="app_about_app">App Details</string>
+    <string name="app_version_">App Version</string>
+    <string name="app_version">v4.0 - Spring 2018</string>
     <string name="gridButtonOne">One</string>
     <string name="gridButtonTwo">Two</string>
     <string name="gridButtonThree">Three</string>
@@ -42,5 +46,6 @@
     <string name="About_clicked">About Clicked</string>
     <string name="drawer_open">open</string>
     <string name="drawer_close">closed</string>
+
 
 </resources>
