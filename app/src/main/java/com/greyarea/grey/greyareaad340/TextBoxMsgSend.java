@@ -5,7 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TextBoxMsgSend extends AppCompatActivity {
 
@@ -27,5 +31,14 @@ public class TextBoxMsgSend extends AppCompatActivity {
         receive.setText(getIntent().getStringExtra("EdiTtEXTvALUE"));
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater mMenuInflater = getMenuInflater();
+        mMenuInflater.inflate(R.menu.about_us_menu, menu);
+
+        return true;
+    }
+
 }
 

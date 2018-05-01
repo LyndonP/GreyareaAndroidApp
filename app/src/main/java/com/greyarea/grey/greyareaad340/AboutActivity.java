@@ -26,6 +26,16 @@ public class AboutActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater mMenuInflater = getMenuInflater();
+        mMenuInflater.inflate(R.menu.about_us_menu, menu);
+
+        return true;
+    }
+
+
+
     public void movieButton(View view){
         Intent intent = new Intent(this, ShowMovies.class);
         startActivity(intent);

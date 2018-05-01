@@ -1,12 +1,17 @@
 package com.greyarea.grey.greyareaad340;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -25,6 +30,15 @@ public class MovieDetails extends AppCompatActivity{
         getGalleryIntent();
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater mMenuInflater = getMenuInflater();
+        mMenuInflater.inflate(R.menu.zombie_menu, menu);
+
+        return true;
+    }
+
 
     private void getGalleryIntent(){
         if(getIntent().hasExtra("image_url") && getIntent().hasExtra("image_name")){
