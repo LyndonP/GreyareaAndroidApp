@@ -85,10 +85,24 @@ public class MainActivity extends AppCompatActivity  {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater mMenuInflater = getMenuInflater();
-        mMenuInflater.inflate(R.menu.my_menu, menu);
+//        MenuInflater mMenuInflater = getMenuInflater();
+//        mMenuInflater.inflate(R.menu.my_menu, menu);
+        getMenuInflater().inflate(R.menu.my_menu,menu);
 
         return true;
+    }
+
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if(Build.VERSION.SDK_INT > 11) {
+            invalidateOptionsMenu();
+            menu.findItem(R.id.about_us).setVisible(true);
+            menu.findItem(R.id.action_setting).setVisible(true);
+            menu.findItem(R.id.action_search).setVisible(true);
+            menu.findItem(R.id.nav_zombies).setVisible(false);
+        }
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.greyarea.grey.greyareaad340;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -34,9 +35,21 @@ public class MovieDetails extends AppCompatActivity{
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater mMenuInflater = getMenuInflater();
-        mMenuInflater.inflate(R.menu.zombie_menu, menu);
+        mMenuInflater.inflate(R.menu.my_menu, menu);
 
         return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if(Build.VERSION.SDK_INT > 11) {
+            invalidateOptionsMenu();
+            menu.findItem(R.id.about_us).setVisible(false);
+            menu.findItem(R.id.action_setting).setVisible(false);
+            menu.findItem(R.id.action_search).setVisible(false);
+            menu.findItem(R.id.nav_zombies).setVisible(true);
+        }
+        return super.onPrepareOptionsMenu(menu);
     }
 
 
