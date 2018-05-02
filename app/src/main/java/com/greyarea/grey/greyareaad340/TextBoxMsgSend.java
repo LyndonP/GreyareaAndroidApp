@@ -28,7 +28,6 @@ public class TextBoxMsgSend extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         receive = (TextView)findViewById(R.id.textView1);
-
         receive.setText(getIntent().getStringExtra("EdiTtEXTvALUE"));
 
     }
@@ -42,11 +41,22 @@ public class TextBoxMsgSend extends AppCompatActivity {
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.action_setting){
+            Toast.makeText(TextBoxMsgSend.this,
+                    "Settings Clicked",
+                    Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         if(Build.VERSION.SDK_INT > 11) {
-            invalidateOptionsMenu();
+            //invalidateOptionsMenu();
             menu.findItem(R.id.about_us).setVisible(true);
-            menu.findItem(R.id.action_setting).setVisible(false);
+            menu.findItem(R.id.action_setting).setVisible(true);
             menu.findItem(R.id.action_search).setVisible(false);
             menu.findItem(R.id.nav_zombies).setVisible(false);
         }

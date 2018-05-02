@@ -23,30 +23,37 @@ public class AboutActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater mMenuInflater = getMenuInflater();
         mMenuInflater.inflate(R.menu.my_menu, menu);
-
         return true;
     }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         if(Build.VERSION.SDK_INT > 11) {
-            invalidateOptionsMenu();
+            //invalidateOptionsMenu();
             menu.findItem(R.id.about_us).setVisible(true);
-            menu.findItem(R.id.action_setting).setVisible(false);
+            menu.findItem(R.id.action_setting).setVisible(true);
             menu.findItem(R.id.action_search).setVisible(false);
             menu.findItem(R.id.nav_zombies).setVisible(false);
         }
         return super.onPrepareOptionsMenu(menu);
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.action_setting){
+            Toast.makeText(AboutActivity.this,
+                    "Settings Clicked",
+                    Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 
     public void movieButton(View view){

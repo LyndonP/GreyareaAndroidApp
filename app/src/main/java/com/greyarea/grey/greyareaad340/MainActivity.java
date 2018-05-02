@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         if(Build.VERSION.SDK_INT > 11) {
-            invalidateOptionsMenu();
+            //invalidateOptionsMenu();
             menu.findItem(R.id.about_us).setVisible(true);
             menu.findItem(R.id.action_setting).setVisible(true);
             menu.findItem(R.id.action_search).setVisible(true);
