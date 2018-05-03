@@ -16,6 +16,7 @@ public class TextBoxMsgSend extends AppCompatActivity {
 
     protected static final String TAG = "greyarea.greyareaad340";
 
+
     TextView receive;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

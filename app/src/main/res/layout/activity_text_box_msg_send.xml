@@ -19,14 +19,14 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:fontFamily="casual"
-        android:textColor="@android:color/holo_blue_dark"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/holo_blue_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
@@ -36,13 +36,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
         android:fontFamily="casual"
-        android:textColor="@android:color/holo_blue_dark"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/holo_blue_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
