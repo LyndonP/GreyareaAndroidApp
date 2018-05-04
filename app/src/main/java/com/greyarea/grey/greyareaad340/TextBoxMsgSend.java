@@ -16,8 +16,6 @@ public class TextBoxMsgSend extends AppCompatActivity {
 
     protected static final String TAG = "greyarea.greyareaad340";
 
-
-    TextView receive;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +26,13 @@ public class TextBoxMsgSend extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        receive = (TextView)findViewById(R.id.textView1);
-        receive.setText(getIntent().getStringExtra("EdiTtEXTvALUE"));
+        // Get the Intent that started this activity and extract the string
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+
+        // Capture the layout's TextView and set the string as its text
+        TextView textView = findViewById(R.id.textView1);
+        textView.setText(message);
 
     }
 

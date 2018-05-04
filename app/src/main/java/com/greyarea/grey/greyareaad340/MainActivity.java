@@ -28,9 +28,8 @@ import android.support.v7.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
 
     protected static final String TAG = "greyarea.greyareaad340";
-    EditText SendValue;
-    Button SendEditTextValue;
-    Intent intent;
+    public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
+
     DrawerLayout mDrawerLayout;
     ActionBarDrawerToggle mToggle;
     android.support.v4.app.FragmentTransaction fragmentTransaction;
@@ -43,15 +42,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
         setContentView(R.layout.activity_main);
         myPrefs = getSharedPreferences("prefID", Context.MODE_PRIVATE);
         String name = myPrefs.getString("nameKey", "No name");
-        //int age = myPrefs.getInt("ageKey",0);
 
         TextView label = (TextView) findViewById(R.id.editText1);
         label.setText(name);
-
 
         Toolbar mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
@@ -105,6 +101,12 @@ public class MainActivity extends AppCompatActivity {
         //get references to Name and Age EditTexts
         final EditText nameEditText = (EditText) findViewById(R.id.editText1);
 
+        String sUsername = nameEditText.getText().toString();
+        if (sUsername.matches("") || sUsername.matches("[0-9]+")) {
+            Toast.makeText(this, "Field cannot be empty or numeric", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         //set up SharedPreferences
         myPrefs = getSharedPreferences("prefID", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = myPrefs.edit();
@@ -114,31 +116,17 @@ public class MainActivity extends AppCompatActivity {
                 "Input Saved!",
                 Toast.LENGTH_SHORT).show();
 
-
-        SendEditTextValue = (Button) findViewById(R.id.button1);
-        //SendValue = (EditText) findViewById(R.id.editText1);
-
-        SendEditTextValue.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                intent = new Intent(getApplicationContext(), TextBoxMsgSend.class);
-                intent.putExtra("EdiTtEXTvALUE", nameEditText.getText().toString());
-                startActivity(intent);
-
-            }
-        });
-
-
+        Intent intent = new Intent(this, TextBoxMsgSend.class);
+        EditText editText = (EditText) findViewById(R.id.editText1);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater mMenuInflater = getMenuInflater();
-//        mMenuInflater.inflate(R.menu.my_menu, menu);
         getMenuInflater().inflate(R.menu.my_menu, menu);
-
         return true;
     }
 
@@ -177,7 +165,6 @@ public class MainActivity extends AppCompatActivity {
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.string.drawer_open, R.string.drawer_close) {
 
-
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -192,7 +179,6 @@ public class MainActivity extends AppCompatActivity {
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
-
         mToggle.setDrawerIndicatorEnabled(true);
         mDrawerLayout.setDrawerListener(mToggle);
     }
