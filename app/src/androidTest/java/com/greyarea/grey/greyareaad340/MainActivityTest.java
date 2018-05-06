@@ -84,6 +84,8 @@ public class MainActivityTest {
         Espresso.closeSoftKeyboard();
         //perform button click
         Espresso.onView(withId(R.id.button1)).perform(click());
+        // Check if the add new activity screen is displayed
+        Espresso.onView(withId(R.id.textView1)).check(matches(isDisplayed()));
 
     }
 
@@ -107,7 +109,7 @@ public class MainActivityTest {
         String testUsername = "test";
 
         // Set SharedPreferences data
-        preferencesEditor.putString("test1", testUsername);
+        preferencesEditor.putString("username", testUsername);
         preferencesEditor.commit();
 
         // Launch activity
