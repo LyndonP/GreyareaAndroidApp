@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.preference.PreferenceManager;
 import android.support.test.espresso.Espresso;
+import android.support.test.filters.SmallTest;
 import android.support.test.rule.ActivityTestRule;
 
 import org.junit.After;
@@ -30,6 +31,10 @@ import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
 
 import android.content.SharedPreferences;
+import android.test.TouchUtils;
+import android.test.ViewAsserts;
+import android.view.View;
+import android.widget.EditText;
 
 
 public class MainActivityTest {
@@ -45,6 +50,7 @@ public class MainActivityTest {
     private Intent intent;
     private String xInput = "T";
     private SharedPreferences.Editor preferencesEditor;
+    private EditText editTextBoxEntry;
 
     Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(TextBoxMsgSend.class.getName(), null, false);
 
@@ -58,8 +64,43 @@ public class MainActivityTest {
         // create a SharedPreferences editor
         preferencesEditor = PreferenceManager.getDefaultSharedPreferences(context).edit();
 
+        editTextBoxEntry = (EditText) mActivity.findViewById(com.greyarea.grey.greyareaad340.R.id.editText1);
 
     }
+
+
+    @Test
+    public void testViewsCreated() {
+        assertNotNull(mActivity);
+        assertNotNull(editTextBoxEntry);
+    }
+
+    @Test
+    public void testViewsVisible() {
+        ViewAsserts.assertOnScreen(editTextBoxEntry.getRootView(), editTextBoxEntry);
+    }
+
+    @Test
+    public void testValidUserInput() {
+        editTextBoxEntry.clearComposingText();
+
+        String testUsername = "test";
+
+        // Set SharedPreferences data
+        preferencesEditor.putString("username", testUsername);
+        preferencesEditor.commit();
+    }
+
+    @Test
+    public void testViewsDisplayed(){
+        View buttonView = mActivity.findViewById(R.id.button1);
+        View editTextView = mActivity.findViewById(R.id.editText1);
+
+        assertNotNull(buttonView);
+        assertNotNull(editTextView);
+    }
+
+
 
     //UI tests for text field & button
     @Test

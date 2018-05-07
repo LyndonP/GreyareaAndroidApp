@@ -183,6 +183,10 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout.setDrawerListener(mToggle);
     }
 
+    public boolean inputValidation(String str){
+        return !str.isEmpty();
+    }
+
     public void movieButton(View view) {
         Intent intent = new Intent(this, ShowMovies.class);
         startActivity(intent);
