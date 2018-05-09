@@ -48,7 +48,6 @@ public class MainActivityTest {
     private MainActivity mActivity = null;
     private String mField = " ";
     private Intent intent;
-    private String xInput = "T";
     private SharedPreferences.Editor preferencesEditor;
     private EditText editTextBoxEntry;
 
@@ -64,6 +63,7 @@ public class MainActivityTest {
         // create a SharedPreferences editor
         preferencesEditor = PreferenceManager.getDefaultSharedPreferences(context).edit();
 
+        // create an Edit Text box for use by main activity
         editTextBoxEntry = (EditText) mActivity.findViewById(com.greyarea.grey.greyareaad340.R.id.editText1);
 
     }
@@ -105,7 +105,6 @@ public class MainActivityTest {
     //UI tests for text field & button
     @Test
     public void testLaunchOfSendButtonClick() {
-        assertNotNull(mActivity.findViewById(R.id.button1));
 
         // perform onclick action on a view
         onView(withId(R.id.button1)).perform(click());

@@ -95,15 +95,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void sendButton(View view) {
 
-        //get reference to TextView
-        TextView label = (TextView) findViewById(R.id.editText1);
-
-        //get references to Name and Age EditTexts
+        //get references to EditText field
         final EditText nameEditText = (EditText) findViewById(R.id.editText1);
 
-        String sUsername = nameEditText.getText().toString();
-        if (sUsername.matches("") || sUsername.matches("[0-9]+")) {
-            Toast.makeText(this, "Field cannot be empty or numeric", Toast.LENGTH_SHORT).show();
+        String inputVal = nameEditText.getText().toString();
+        if (!inputValidation(inputVal)) {
+            Toast.makeText(this, "Field cannot be empty", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -121,6 +118,10 @@ public class MainActivity extends AppCompatActivity {
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
+    }
+
+    public boolean inputValidation(String str){
+        return !str.isEmpty();
     }
 
 
@@ -161,31 +162,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void setupDrawer() {
-        mToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.string.drawer_open, R.string.drawer_close) {
+//    private void setupDrawer() {
+//        mToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+//                R.string.drawer_open, R.string.drawer_close) {
+//
+//            /** Called when a drawer has settled in a completely open state. */
+//            public void onDrawerOpened(View drawerView) {
+//                super.onDrawerOpened(drawerView);
+//                getSupportActionBar().setTitle("Navigation!");
+//                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+//            }
+//
+//            /** Called when a drawer has settled in a completely closed state. */
+//            public void onDrawerClosed(View view) {
+//                super.onDrawerClosed(view);
+//                getSupportActionBar().setTitle(mActivityTitle);
+//                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+//            }
+//        };
+//        mToggle.setDrawerIndicatorEnabled(true);
+//        mDrawerLayout.setDrawerListener(mToggle);
+//    }
 
-            /** Called when a drawer has settled in a completely open state. */
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                getSupportActionBar().setTitle("Navigation!");
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
 
-            /** Called when a drawer has settled in a completely closed state. */
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-                getSupportActionBar().setTitle(mActivityTitle);
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-        };
-        mToggle.setDrawerIndicatorEnabled(true);
-        mDrawerLayout.setDrawerListener(mToggle);
-    }
-
-    public boolean inputValidation(String str){
-        return !str.isEmpty();
-    }
 
     public void movieButton(View view) {
         Intent intent = new Intent(this, ShowMovies.class);
