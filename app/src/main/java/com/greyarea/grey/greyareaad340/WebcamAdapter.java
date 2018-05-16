@@ -28,6 +28,7 @@ public class WebcamAdapter extends RecyclerView.Adapter<WebcamAdapter.TrafficVie
     private ArrayList<Webcam> trafficCamArrayList;
     private ArrayList<Webcam> mFilteredList;
 
+    //create an adapter
     public WebcamAdapter(Context context, ArrayList<Webcam> trafficCamArrayList){
         this.context = context;
         this.trafficCamArrayList = trafficCamArrayList;
