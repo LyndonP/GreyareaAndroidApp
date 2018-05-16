@@ -3,6 +3,7 @@
     package="com.greyarea.grey.greyareaad340">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -45,9 +46,16 @@
         <activity
             android:name=".AboutActivity"
             android:parentActivityName=".MainActivity"
-            android:label="About Greyarea">
+            android:label="About Greyarea"
+            />
 
-        </activity>
+        <activity
+            android:name=".WebcamClient"
+            android:parentActivityName=".MainActivity"
+            android:label="Live Cams"
+            />
+
+
     </application>
 
 </manifest>

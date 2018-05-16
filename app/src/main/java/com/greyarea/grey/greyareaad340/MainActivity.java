@@ -4,6 +4,8 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -86,11 +88,32 @@ public class MainActivity extends AppCompatActivity {
                             "Zombie Movies!",
                             Toast.LENGTH_SHORT).show();
                 }
+
+
+                if (id == R.id.nav_cams && isOnline()) {
+                    Intent intent = new Intent(getApplicationContext(), WebcamClient.class);
+                    startActivity(intent);
+                    Toast.makeText(MainActivity.this,
+                            "Live Cams",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this,
+                            "Sorry, please connect to the Internet and try again",
+                            Toast.LENGTH_SHORT).show();
+                }
                 return true;
             }
         });
         Log.d(TAG, "onCreate started from Main Activity");
 
+    }
+
+
+    public boolean isOnline() {
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        return (networkInfo != null && networkInfo.isConnected());
     }
 
     public void sendButton(View view) {
@@ -160,29 +183,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-//    private void setupDrawer() {
-//        mToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-//                R.string.drawer_open, R.string.drawer_close) {
-//
-//            /** Called when a drawer has settled in a completely open state. */
-//            public void onDrawerOpened(View drawerView) {
-//                super.onDrawerOpened(drawerView);
-//                getSupportActionBar().setTitle("Navigation!");
-//                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-//            }
-//
-//            /** Called when a drawer has settled in a completely closed state. */
-//            public void onDrawerClosed(View view) {
-//                super.onDrawerClosed(view);
-//                getSupportActionBar().setTitle(mActivityTitle);
-//                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-//            }
-//        };
-//        mToggle.setDrawerIndicatorEnabled(true);
-//        mDrawerLayout.setDrawerListener(mToggle);
-//    }
 
 
 

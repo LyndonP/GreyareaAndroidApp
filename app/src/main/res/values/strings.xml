@@ -50,6 +50,9 @@
     <string name="drawer_open">open</string>
     <string name="drawer_close">closed</string>
     <string name="saved_button_text">Saved</string>
+    <string name="camera_ownership">Camera Ownership</string>
+    <string name="camera_label">Camera Label</string>
+    <string name="live_cams">Live Cams</string>
 
 
 </resources>

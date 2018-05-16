@@ -11,6 +11,11 @@
             android:id="@+id/nav_zombies"
             android:icon="@drawable/ic_whatshot_white_24dp"
             android:title="@string/zombie_movies" />
+        <item
+            android:id="@+id/nav_cams"
+            android:icon="@drawable/ic_whatshot_white_24dp"
+            android:title="@string/live_cams" />
+
     </group>
 
 </menu>
