@@ -27,6 +27,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 
+import com.grey.greyareaad340.MapsActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     protected static final String TAG = "greyarea.greyareaad340";
@@ -89,6 +91,13 @@ public class MainActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 }
 
+                if (id == R.id.nav_maps) {
+                    Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(MainActivity.this,
+                            "Location, location, location!",
+                            Toast.LENGTH_SHORT).show();
+                }
 
                 if (id == R.id.nav_cams && isOnline()) {
                     Intent intent = new Intent(getApplicationContext(), WebcamClient.class);

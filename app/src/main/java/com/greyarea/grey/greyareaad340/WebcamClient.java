@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -56,13 +57,13 @@ public class WebcamClient extends AppCompatActivity  {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        if (Build.VERSION.SDK_INT > 11) {
+
             invalidateOptionsMenu();
-            menu.findItem(R.id.about_us).setVisible(false);
+            menu.findItem(R.id.about_us).setVisible(true);
             menu.findItem(R.id.action_setting).setVisible(true);
             menu.findItem(R.id.action_search).setVisible(true);
-            menu.findItem(R.id.nav_zombies).setVisible(false);
-        }
+            menu.findItem(R.id.nav_zombies).setVisible(true);
+
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -113,12 +114,17 @@ public class WebcamClient extends AppCompatActivity  {
     //Create options menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.my_menu, menu);
+        MenuInflater mMenuInflater = getMenuInflater();
+        mMenuInflater.inflate(R.menu.my_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_search) {
+            return true;
+        }
         if (item.getItemId() == R.id.action_setting) {
             Toast.makeText(WebcamClient.this,
                     "Settings Clicked",

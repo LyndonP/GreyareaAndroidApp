@@ -31,8 +31,6 @@
     <string name="closeDrawer">close_drawer</string>
 
 
-
-
     <!-- Navigation Drawer menu labels -->
     <string name="nav_home">Home</string>
     <string name="nav_photos">Photos</string>
@@ -53,6 +51,8 @@
     <string name="camera_ownership">Camera Ownership</string>
     <string name="camera_label">Camera Label</string>
     <string name="live_cams">Live Cams</string>
+    <string name="title_activity_maps">Location, location</string>
+    <string name="maps">Maps</string>
 
 
 </resources>

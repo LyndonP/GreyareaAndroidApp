@@ -5,6 +5,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,7 +23,8 @@
 
         <!-- The main/home activity (it has no parent activity) -->
 
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:label="Greyarea AD340">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,35 +36,43 @@
         <!-- Children of the main activity -->
         <activity
             android:name=".TextBoxMsgSend"
-            android:parentActivityName=".MainActivity"
-            android:label="Message Sent"/>
+            android:label="Message Sent"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ShowMovies"
-            android:parentActivityName=".MainActivity"
             android:label="Zombie Movies"
-            />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".RecyclerAdapter"
-            android:parentActivityName=".MainActivity"
-            />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MovieDetails"
-            android:parentActivityName=".ShowMovies"
             android:label="Zombie Movies Details"
-            />
+            android:parentActivityName=".ShowMovies" />
         <activity
             android:name=".AboutActivity"
-            android:parentActivityName=".MainActivity"
             android:label="About Greyarea"
-            />
-
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".WebcamClient"
-            android:parentActivityName=".MainActivity"
             android:label="Live Cams"
-            />
+            android:parentActivityName=".MainActivity" />
 
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
 
+        <activity
+            android:name="com.grey.greyareaad340.MapsActivity"
+            android:label="@string/title_activity_maps"></activity>
     </application>
 
 </manifest>
