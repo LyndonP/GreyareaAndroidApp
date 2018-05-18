@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(MainActivity.this,
-                            "Sorry, please connect to the Internet and try again",
+                            "Sorry, please connect to the Internet and try again", //break this out
                             Toast.LENGTH_SHORT).show();
                 }
                 return true;
