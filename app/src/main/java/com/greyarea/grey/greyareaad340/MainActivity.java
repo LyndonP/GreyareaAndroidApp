@@ -83,14 +83,6 @@ public class MainActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 }
 
-                if (id == R.id.nav_zombies) {
-                    Intent intent = new Intent(getApplicationContext(), ShowMovies.class);
-                    startActivity(intent);
-                    Toast.makeText(MainActivity.this,
-                            "Zombie Movies!",
-                            Toast.LENGTH_SHORT).show();
-                }
-
                 if (id == R.id.nav_maps) {
                     Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
                     startActivity(intent);
@@ -99,15 +91,20 @@ public class MainActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 }
 
-                if (id == R.id.nav_cams && isOnline()) {
+                if (id == R.id.nav_zombies) {
+                    Intent intent = new Intent(getApplicationContext(), ShowMovies.class);
+                    startActivity(intent);
+                    Toast.makeText(MainActivity.this,
+                            "Zombie Movies!",
+                            Toast.LENGTH_SHORT).show();
+                }
+
+
+                if (id == R.id.nav_cams) {
                     Intent intent = new Intent(getApplicationContext(), WebcamClient.class);
                     startActivity(intent);
                     Toast.makeText(MainActivity.this,
                             "Live Cams",
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(MainActivity.this,
-                            "Sorry, please connect to the Internet and try again", //break this out
                             Toast.LENGTH_SHORT).show();
                 }
                 return true;
@@ -118,12 +115,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public boolean isOnline() {
-        ConnectivityManager connMgr = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        return (networkInfo != null && networkInfo.isConnected());
-    }
 
     public void sendButton(View view) {
 

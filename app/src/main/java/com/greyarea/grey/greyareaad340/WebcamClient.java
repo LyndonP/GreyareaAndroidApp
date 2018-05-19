@@ -1,5 +1,8 @@
 package com.greyarea.grey.greyareaad340;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -49,9 +52,23 @@ public class WebcamClient extends AppCompatActivity  {
         mAdapter = new WebcamAdapter(WebcamClient.this, webcamArrList);
         camView.setAdapter(mAdapter);
 
+        if (!isOnline()){
+            Toast.makeText(WebcamClient.this,
+                    "Sorry, please connect to the Internet and try again",
+                    Toast.LENGTH_SHORT).show();
+        }
+
 
         requestQueue = Volley.newRequestQueue(this);
         parseJSON();
+    }
+
+
+    public boolean isOnline() {
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        return (networkInfo != null && networkInfo.isConnected());
     }
 
 

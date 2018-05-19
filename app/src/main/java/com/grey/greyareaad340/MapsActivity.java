@@ -19,6 +19,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.greyarea.grey.greyareaad340.R;
@@ -54,6 +55,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
@@ -62,8 +64,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Log.d("My Location", location.toString());
                 mMap.clear(); //clears our map
                 LatLng newLocation = new LatLng(location.getLatitude(), location.getLongitude());
-                mMap.addMarker(new MarkerOptions().position(newLocation).title("New Location"));
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(newLocation, 8));
+                mMap.addMarker(new MarkerOptions().position(newLocation).title("New Location")
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(newLocation, 9));
             }
 
             @Override
