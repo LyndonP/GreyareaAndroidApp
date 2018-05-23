@@ -12,6 +12,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -66,18 +68,32 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     ArrayList<Marker> markers;
     String url = "https://web6.seattle.gov/Travelers/api/Map/Data?zoomId=13&type=2";
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+    boolean not_first_time_showing_info_window;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
         setContentView(R.layout.activity_maps);
 
-        //Toolbar toolbar = findViewById(R.id.toolbar);
-//        toolbar.setTitle("Maps");
+        Toolbar mToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
+//        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+//        setSupportActionBar(myToolbar);
+//
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.setDisplayHomeAsUpEnabled(true);
+
+//        Toolbar toolbar = findViewById(R.id.my_toolbar);
+//        //toolbar.setTitle("Maps");
 //        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        //getSupportActionBar().setDisplayShowHomeEnabled(true);
 //        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -138,7 +154,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         Toast.makeText(this, "Info window clicked",
                 Toast.LENGTH_SHORT).show();
         marker.getTag();
-        //marker.getTitle();
 
     }
 
