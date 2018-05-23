@@ -128,7 +128,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         webcamArrList = parseJson();
 
 
-        // Add a marker in Seattle and move the camera
+        // Add a marker in BC and move the camera
         LatLng bc = new LatLng(53.7267, -127.6476);
         mMap.addMarker(new MarkerOptions().position(bc).title("BC"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(bc));
@@ -210,7 +210,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             markerOptions.position(newCamLocation).title(camera.getLabel());
                         }
 
-                        mMap.setInfoWindowAdapter(new CustomInfoWindowGoogleMap(MapsActivity.this));
+                        mMap.setInfoWindowAdapter(new CustomInfoWindow(MapsActivity.this));
                         Marker m = mMap.addMarker((markerOptions));
                         m.setTag(camera);
                         mMap.moveCamera(CameraUpdateFactory.newLatLng(newCamLocation));
