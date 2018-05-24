@@ -1,35 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
     android:layout_height="wrap_content"
-    android:padding="12dp"
+    android:padding="4dp"
     android:background="@drawable/common_google_signin_btn_text_light"
     android:orientation="horizontal">
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="100dp"
+        android:id="@+id/webcamImage"
+        android:layout_width="138dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        android:src="@mipmap/ic_launcher"
-        android:id="@+id/webcamImage"/>
+        android:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/webcamName"
-        android:layout_width="wrap_content"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="156dp"
         android:text="Label"
+        android:textAlignment="center"
         android:textSize="16sp" />
 
     <TextView
         android:id="@+id/webcamGeoAddy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="10dp"
-        android:text="GeoAddy"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="194dp"
+        android:text="webcamGeo"
         android:textSize="16sp" />
 
-</LinearLayout>
+</RelativeLayout>

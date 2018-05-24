@@ -35,11 +35,17 @@ public class CustomInfoWindow implements GoogleMap.InfoWindowAdapter {
 
         TextView camName = view.findViewById(R.id.webcamName);
         ImageView camPic = view.findViewById(R.id.webcamImage);
+        TextView camDes = view.findViewById(R.id.webcamGeoAddy);
 
         camName.setText(marker.getTitle());
+        camDes.setText(marker.getSnippet());
 
         Webcam camData = (Webcam) marker.getTag();
         String imageURL = camData.getImageURL();
+        String camDataLabel = camData.getLabel();
+        String camDescription = camData.getCamDescription();
+        String camOwnership = camData.getCamOwnership();
+
 
         Picasso.with(view.getContext()).load(imageURL).error(R.mipmap.ic_launcher_round).resize(480, 405).into(camPic, new MarkerCallback(marker));
 

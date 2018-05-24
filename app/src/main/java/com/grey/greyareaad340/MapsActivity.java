@@ -1,28 +1,27 @@
 package com.grey.greyareaad340;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -38,37 +37,40 @@ import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.greyarea.grey.greyareaad340.MainActivity;
 import com.greyarea.grey.greyareaad340.R;
 import com.greyarea.grey.greyareaad340.Webcam;
 import com.greyarea.grey.greyareaad340.WebcamAdapter;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
-import android.support.v7.widget.Toolbar;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Build;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
+import java.util.Locale;
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnInfoWindowClickListener{
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnInfoWindowClickListener {
 
-    private GoogleMap mMap;
-    private LocationManager locationManager;
-    private LocationListener locationListener;
-    private RecyclerView camView;
-    private WebcamAdapter mAdapter;
-    private List<Webcam> webcamArrList;
-    private RequestQueue requestQueue;
+    GoogleMap mMap;
+    GoogleMap mGoogleMap;
+    LocationManager locationManager;
+    LocationListener locationListener;
+    RecyclerView camView;
+    WebcamAdapter mAdapter;
+    List<Webcam> webcamArrList;
+    RequestQueue requestQueue;
     ArrayList<Marker> markers;
+    Location lastLocation;
+    Marker currLocMarker;
+    Geocoder geocoder;
+    Marker currMarker;
     String url = "https://web6.seattle.gov/Travelers/api/Map/Data?zoomId=13&type=2";
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-    boolean not_first_time_showing_info_window;
+    //boolean not_first_time_showing_info_window;
+    List<Address> geocoded;
+    private Hashtable<String, String> allMarkers = new Hashtable<>();
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -82,26 +84,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
-//        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-//        setSupportActionBar(myToolbar);
-//
-//        ActionBar actionBar = getSupportActionBar();
-//        actionBar.setDisplayHomeAsUpEnabled(true);
-
-//        Toolbar toolbar = findViewById(R.id.my_toolbar);
-//        //toolbar.setTitle("Maps");
-//        setSupportActionBar(toolbar);
-//        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        //getSupportActionBar().setDisplayShowHomeEnabled(true);
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(getApplicationContext(),MainActivity.class));
-//                finish();
-//            }
-//        });
-
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -154,17 +136,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         Toast.makeText(this, "Info window clicked",
                 Toast.LENGTH_SHORT).show();
         marker.getTag();
+        marker.getTitle();
+        marker.getId();
 
     }
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-//        Integer clickCount = marker.getTag();
-//        if (clickCount !=null) {
-//            clickCount = clickCount +1;
-//        }
         Log.d("MARKERCLICK", "value: ");
-                return false;
+        return false;
     }
 
     public List<Webcam> parseJson() {
@@ -182,13 +162,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         String camLabel = "";
                         String camImage = "";
                         String camOwnership = "";
-
+                        String camAdd = "";
 
                         Webcam camera = new Webcam(camLabel, camImage, camOwnership);
                         JSONArray camLocation = camObj.getJSONArray("PointCoordinate");
 
                         camera.setLatitude(camLocation.getDouble(0));
                         camera.setLongitude(camLocation.getDouble(1));
+
 
                         JSONArray camArray = camObj.getJSONArray("Cameras");
                         for (int j = 0; j < camArray.length(); j++) {
@@ -204,10 +185,14 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                                 camera.getLongitude());
                         if (camera.getCamOwnership().equals(("wsdot"))) {
                             markerOptions.position(newCamLocation).title(camera.getLabel())
+                                    .snippet(camera.getCamDescription())
                                     .icon(BitmapDescriptorFactory
-                                    .defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+                                            .defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
                         } else {
-                            markerOptions.position(newCamLocation).title(camera.getLabel());
+                            markerOptions.position(newCamLocation).title(camera.getLabel())
+                                    .snippet(camera.getCamDescription())
+                                    .icon(BitmapDescriptorFactory
+                                            .defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
                         }
 
                         mMap.setInfoWindowAdapter(new CustomInfoWindow(MapsActivity.this));
@@ -297,13 +282,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                             location.getLongitude()));
 
                     circleOptions.radius(220);
-                    circleOptions.fillColor(Color.BLUE);
+                    circleOptions.fillColor(Color.RED);
                     circleOptions.strokeWidth(6);
 
                     mMap.addCircle(circleOptions);
                 }
             };
-
 
 }
 
