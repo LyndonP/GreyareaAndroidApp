@@ -52,7 +52,7 @@ public class CustomInfoWindow implements GoogleMap.InfoWindowAdapter {
         return view;
     }
 
-    // Picasso interface called Callback
+    // Picasso interface called Callback method
     static class MarkerCallback implements Callback {
         Marker marker = null;
 
