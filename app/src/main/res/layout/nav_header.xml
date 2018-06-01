@@ -11,7 +11,7 @@
     <ImageView
         android:layout_width="181dp"
         android:layout_height="117dp"
-        android:src="@mipmap/ic_launcher_zom_pic" />
+        android:src="@mipmap/ic_launcher" />
 
     <TextView
         android:layout_width="wrap_content"
